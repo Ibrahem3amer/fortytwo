@@ -6,4 +6,4 @@ def homepage_visitor(request):
     Accepts http request, return homepage for non-authorized user. 
     """
     hard_coded_data = call_command('loaddata', 'data.json', app_label='test_assignment')
-    return render(request, 'home.html', {'user_data': hard_coded_data})
+    return render(request, 'home.html')
