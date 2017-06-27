@@ -13,3 +13,12 @@ class user_vists_homepage(TestCase):
 
         # Assert test
         self.assertEqual(request.status_code, 200)
+
+    def test_request_view(self):
+        # Setup test
+        request = reverse('request_page')
+        request = self.client.get(request)
+
+        # Exercise test
+        # Assert test
+        self.assertEqual(request.status_code, 200)
