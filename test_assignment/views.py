@@ -19,3 +19,13 @@ def homepage_visitor(request):
     # person = get_object_or_404(Person, pk = 1)
     
     return render(request, 'home.html', {'person': person})
+
+def latest_requests(request):
+    """
+    Accepts http request, calls latest 10 requests in db, display template to user. 
+    """
+    # Checks for new unread requests.
+
+    # Calls latest 10 requests in db.
+
+    # Display template to user.
