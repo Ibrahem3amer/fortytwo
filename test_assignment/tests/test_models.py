@@ -1,5 +1,6 @@
-from test_assignment.models import Person
+from test_assignment.models import Person, Request
 from django.test import TestCase
+from django.urls import reverse
 
 class PersonTest(TestCase):
     def test_add_new_person(self):
@@ -19,3 +20,15 @@ class PersonTest(TestCase):
         # Assert test
         self.assertEqual(data['f_name'], db_result.first_name)
         self.assertEqual(db_result, new_person)
+
+
+class RequestTest(TestCase):
+    def test_add_new_request_through_view(self):
+        # Setup test
+        self.client.get(reverse('visitor_homepage'))
+
+        # Exercise test
+        requests_in_db = Request.objects.all().count()
+
+        # Assert test
+        self.assertTrue(requests_in_db > 0)
