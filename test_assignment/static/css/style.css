@@ -26,3 +26,10 @@ label{
     width: 100%;
     padding: 10px;
 }
+.contact_title{
+    font-weight: normal;
+    font-style: italic;
+}
+.contact_address{
+    margin-bottom: 20px;
+}

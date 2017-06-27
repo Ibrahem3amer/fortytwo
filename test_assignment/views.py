@@ -6,6 +6,12 @@ def homepage_visitor(request):
     """
     Accepts http request, return homepage for non-authorized user. 
     """
-    hard_coded_data = call_command('loaddata', 'data.json', app_label='test_assignment')
-    person          = get_object_or_404(Person, pk = 1)
+    person          = Person.objects.create(
+            first_name  = 'Ibrahem',
+            sur_name    = 'Amer',
+            birth_date  = '17-12-1995',
+            bio         = 'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
+            contacts    = {'email': 'test_@test.com', 'phone': '01092053058', 'fb': 'ibrahem3amer'}
+        )
+    person.save()
     return render(request, 'home.html', {'person': person})
