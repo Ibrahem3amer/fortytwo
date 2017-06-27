@@ -14,4 +14,8 @@ def homepage_visitor(request):
             contacts    = {'email': 'test_@test.com', 'phone': '01092053058', 'fb': 'ibrahem3amer'}
         )
     person.save()
+
+    # In case you want to user fixture-based data.
+    # person = get_object_or_404(Person, pk = 1)
+    
     return render(request, 'home.html', {'person': person})
