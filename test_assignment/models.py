@@ -24,7 +24,8 @@ class RequestHandler(object):
         """
         Accepts http request sent by middleware, saves it to db. Return False if smth went wrong, else True. 
         """
-        cls.increment_unread_requests()
+        if 'requests' not in request.path:
+            cls.increment_unread_requests()
         http_request = Request.objects.create(
                 scheme  = request.scheme,
                 body    = request.body,
