@@ -19,7 +19,8 @@ from test_assignment import views as assignment_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', assignment_views.homepage_visitor, name="visitor_homepage"),
     url(r'^requests', assignment_views.latest_requests, name="request_page"),
+    url(r'^', assignment_views.homepage_visitor, name="visitor_homepage"),
+
 
 ]

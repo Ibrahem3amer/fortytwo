@@ -1,4 +1,4 @@
-from test_assignment.models import Person, Request
+from test_assignment.models import Person, Request, RequestHandler
 from django.test import TestCase
 from django.urls import reverse
 
@@ -32,3 +32,39 @@ class RequestTest(TestCase):
 
         # Assert test
         self.assertTrue(requests_in_db > 0)
+
+    def test_add_more_than_one_request(self):
+        # Setup test
+        for i in range(5):
+            self.client.get(reverse('visitor_homepage'))
+
+        # Exercise test
+        requests_in_db = Request.objects.all().count()
+
+        # Assert test
+        self.assertTrue(requests_in_db > 4)
+
+    def test_unread_requests(self):
+        # Setup test
+        self.client.get(reverse('visitor_homepage'))
+
+        # Exercise test
+        requests_in_db  = Request.objects.all().count()
+        n               = RequestHandler.get_unread_requests()
+
+        # Assert test
+        self.assertTrue(requests_in_db > 0)
+        self.assertTrue(n > 0)
+
+    def test_read_the_unread(self):
+        # Setup test
+        self.client.get(reverse('visitor_homepage'))
+
+        # Exercise test
+        n       = RequestHandler.get_unread_requests()
+        self.client.get(reverse('request_page'))
+        new_n   = RequestHandler.get_unread_requests()
+
+        # Assert test
+        self.assertTrue(new_n != n)
+        self.assertTrue(n > new_n)
