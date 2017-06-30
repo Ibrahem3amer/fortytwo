@@ -11,7 +11,7 @@ def homepage_visitor(request):
             sur_name    = 'Amer',
             birth_date  = '17-12-1995',
             bio         = 'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
-            contacts    = {'email': 'test_@test.com', 'phone': '01092053058', 'fb': 'ibrahem3amer'}
+            contacts    = {"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"}
         )
     person.save()
 
