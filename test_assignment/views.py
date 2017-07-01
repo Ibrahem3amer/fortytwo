@@ -41,4 +41,5 @@ def edit_info(request):
     """
     if request.method == 'POST':
         return redirect('visitor_homepage')
-    return HttpResponse()
+    else:
+        return render(request, 'edit_data.html')
