@@ -1,0 +1,27 @@
+{% include "public/head_file.html"%}
+    <h1>Edit personal Info</h1>
+    <div class="container">
+        <div class="basic_info">
+            <h3><label for="name">Name: </label></h3>
+            <div class="personal_info"><input type="text" name="name" /></div>
+            <h3><label for="sur_name">Surname: </label></h3>
+            <div class="personal_info"><input type="text" name="sur_name" /></div>
+            <h3><label for="b_day">date of birth: </label></h3>
+            <div class="personal_info"><input type="date" name="b_day" /></div>
+            <h3><label for="photo">photo: </label></h3>
+            <div class="personal_info"><input type="file" name="photo" accept="image/*" /></div>
+        </div>
+        <div class="contact_info">
+            <h3><label for="contacts">contacts: </label></h3>
+            <textarea class="personal contact_area" name="contacts"></textarea>
+        </div>
+        <div class="bio_info">
+            <h3><label for="bio">bio: </label></h3>
+            <textarea class="personal_info bio_area" name="bio"></textarea>
+        </div>
+
+
+        <hr />
+        <a href="{% url 'request_page'%}">Requests page</a> 
+    </div>
+{% include "public/footer_file.html"%}

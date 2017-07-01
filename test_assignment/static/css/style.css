@@ -1,6 +1,7 @@
 body{
     background-color: #95a5a6;
 }
+
 .container{
     margin-right: auto;
     margin-left: auto;
@@ -16,24 +17,38 @@ body{
 h1{
     color: #f1c40f;
 }
+
 label{
     font-weight: bold;
     margin-bottom: 10px;
     margin-right: 10px;
     color: #2c3e50;
 }
+
 .personal_info{
     margin-bottom: 25px;
 }
+
 .bio_area{
-    clear: right;
-    width: 100%;
     padding: 10px;
+    width: auto;
 }
+
+.contact_area{
+    padding: 10px;
+    width: auto;
+}
+
 .contact_title{
     font-weight: normal;
     font-style: italic;
 }
+
 .contact_address{
     margin-bottom: 20px;
+}
+
+hr{
+    width: 100%;
+    clear: both;
 }
