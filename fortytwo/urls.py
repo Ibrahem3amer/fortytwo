@@ -20,6 +20,7 @@ from test_assignment import views as assignment_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^requests', assignment_views.latest_requests, name="request_page"),
+    url(r'^edit_info', assignment_views.edit_info, name="edit_personal_data"),
     url(r'^', assignment_views.homepage_visitor, name="visitor_homepage"),
 
 

@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.management import call_command
+from django.http import HttpResponse
 from test_assignment.models import Person, Request, RequestHandler
 
 def homepage_visitor(request):
@@ -33,3 +34,11 @@ def latest_requests(request):
 
     # Display template to user.
     return render(request, 'requests.html', {'n': unread_requests, 'requests': latest_ten_reqeusts})
+
+def edit_info(request):
+    """
+    Accepts GET request and display fillable form to user. Redirect user to homepage if POST.
+    """
+    if request.method == 'POST':
+        return redirect('visitor_homepage')
+    return HttpResponse()
