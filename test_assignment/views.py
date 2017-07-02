@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.management import call_command
 from django.http import HttpResponse
 from test_assignment.models import Person, Request, RequestHandler
+from test_assignment.forms import EditPersonForm
 
 def homepage_visitor(request):
     """
@@ -42,4 +43,5 @@ def edit_info(request):
     if request.method == 'POST':
         return redirect('visitor_homepage')
     else:
-        return render(request, 'edit_data.html')
+        form = EditPersonForm()
+        return render(request, 'edit_data.html', {'form': form})

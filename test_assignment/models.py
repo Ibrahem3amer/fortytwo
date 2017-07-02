@@ -1,11 +1,16 @@
+from django.core.validators import RegexValidator
 from django.db import models
 
 class Person(models.Model):
-    first_name  = models.CharField(max_length = 100, default = 'no name')
-    sur_name    = models.CharField(max_length = 100, default = 'no sur name')
+    # Helper variables
+    name_validator    = RegexValidator(r'^[a-zA-Z][a-zA-Z0-9]*([ ]?[a-zA-Z0-9]+)+$', 'Name cannot start with number, should consist of characters.')
+
+    first_name  = models.CharField(max_length = 100, validators = [name_validator], default = 'no name')
+    sur_name    = models.CharField(max_length = 100, validators = [name_validator], default = 'no sur name')
     bio         = models.CharField(max_length = 500, default = 'N/A')
     birth_date  = models.CharField(max_length = 100, default = 'N/A')
     contacts    = models.CharField(max_length = 200, default = '{}')
+    photo       = models.ImageField(default = 'pic_folder/None/no-img.jpg')
 
 class Request(models.Model):
     scheme      = models.CharField(max_length = 100, default = 'N/A')
