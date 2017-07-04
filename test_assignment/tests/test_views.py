@@ -35,10 +35,18 @@ class user_edits_personal_info(TestCase):
         self.assertEqual(request.status_code, 200)
         self.assertTemplateUsed(request, 'edit_data.html')
 
-    def test_user_access_by_post_request_and_redirected(self):
+    def test_user_submits_valid_post_request_and_redirected(self):
         # Setup test
         request = reverse('edit_personal_data')
-        request = self.client.post(request)
+        data    = {
+            'first_name':'Ibrahem',
+            'sur_name':'Amer',
+            'birth_date':'17-12-1995',
+            'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
+            'contacts':{"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"},
+            'photo': 'N/A',
+        }
+        request = self.client.post(request, data = data)
 
         # Exercise test
         # Assert test

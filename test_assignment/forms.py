@@ -17,5 +17,3 @@ class EditPersonForm(forms.ModelForm):
         EditPersonValidator.validate_birth_date(self.cleaned_data['birth_date'])
         return self.cleaned_data['birth_date']
         
-
-        

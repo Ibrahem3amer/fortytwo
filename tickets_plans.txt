@@ -1,0 +1,17 @@
+t5:
+1. Make an HTML mockup.
+1. Convert it to django template.
+1. Test view with hard-coded data.
+1. Code view with hard-coded data.
+1. Code JQuery so that it accepts user input, disable browser, and send request to view.
+1. Test JQuery connection in both cases: success and failure.
+1. Validate input data.
+1. Code image preview feature using HTML5 FilesAPI.
+1. Test basic validation rules for model.
+1. Code validation rules on model-level.
+1. Test form validation rules.
+1. Code form with form-level validation rules.
+1. Test model for accepting image field.
+1. Update model so that it accepts image field.
+============
+

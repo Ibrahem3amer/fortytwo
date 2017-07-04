@@ -3,22 +3,15 @@ from django.core.management import call_command
 from django.http import HttpResponse
 from test_assignment.models import Person, Request, RequestHandler
 from test_assignment.forms import EditPersonForm
+import json
 
 def homepage_visitor(request):
     """
     Accepts http request, return homepage for non-authorized user. 
     """
-    person          = Person.objects.create(
-            first_name  = 'Ibrahem',
-            sur_name    = 'Amer',
-            birth_date  = '17-12-1995',
-            bio         = 'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
-            contacts    = {"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"}
-        )
-    person.save()
 
     # In case you want to user fixture-based data.
-    # person = get_object_or_404(Person, pk = 1)
+    person = get_object_or_404(Person, pk = 1)
     
     return render(request, 'home.html', {'person': person})
 
@@ -41,7 +34,14 @@ def edit_info(request):
     Accepts GET request and display fillable form to user. Redirect user to homepage if POST.
     """
     if request.method == 'POST':
-        return redirect('visitor_homepage')
-    else:
-        form = EditPersonForm()
-        return render(request, 'edit_data.html', {'form': form})
+        person      = Person.objects.get()
+        form        = EditPersonForm(request.POST, instance = person)
+        response    = {}
+        if(form.is_valid()):
+            form.save()
+            response['status'] = 'Success!'
+            return HttpResponse(json.dumps(response), content_type = "application/json")
+        else:
+            return HttpResponse(json.dumps({"nothing to see": "this isn't happening"}), content_type = "application/json")
+    
+    return render(request, 'edit_data.html')
