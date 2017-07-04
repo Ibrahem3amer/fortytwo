@@ -62,3 +62,8 @@ hr{
     background-color: #c0392b;
     display: none;
 }
+
+#preview img{
+    width: 70%;
+    height: 70%;
+}

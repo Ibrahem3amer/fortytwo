@@ -14,7 +14,9 @@
                 <h3><label for="birth_date">date of birth: </label></h3>
                 <div class="personal_info"><input type="date" name="birth_date" id="birth_date" value="{{ person.birth_date }}" /></div>
                 <h3><label for="photo">photo: </label></h3>
-                <div class="personal_info"><input type="file" name="photo" accept="image/*" id="photo" /></div>
+                <div class="personal_info"><input type="file" name="photo" accept="image/*" id="photo" onchange="handleFiles(this.files)"/>
+                    <div id="preview"></div>
+                </div>
             </div>
             <div class="contact_info">
                 <h3><label for="contacts">contacts: </label></h3>
