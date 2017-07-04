@@ -11,7 +11,8 @@ def homepage_visitor(request):
     """
 
     # In case you want to user fixture-based data.
-    person = get_object_or_404(Person, pk = 1)
+    person          = get_object_or_404(Person, pk = 1)
+    person.contacts = json.loads(person.contacts)
     
     return render(request, 'home.html', {'person': person})
 
@@ -33,15 +34,16 @@ def edit_info(request):
     """
     Accepts GET request and display fillable form to user. Redirect user to homepage if POST.
     """
+    person      = Person.objects.get(pk = 1)
     if request.method == 'POST':
-        person      = Person.objects.get()
         form        = EditPersonForm(request.POST, instance = person)
         response    = {}
         if(form.is_valid()):
             form.save()
-            response['status'] = 'Success!'
+            response['status'] = 'success'
             return HttpResponse(json.dumps(response), content_type = "application/json")
         else:
+            response['status'] = 'error'
             return HttpResponse(json.dumps({"nothing to see": "this isn't happening"}), content_type = "application/json")
     
-    return render(request, 'edit_data.html')
+    return render(request, 'edit_data.html', {'person': person})

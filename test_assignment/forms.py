@@ -10,10 +10,14 @@ class EditPersonForm(forms.ModelForm):
         model       = Person
         fields      = '__all__'
     
-    def clean_birth_date(self):
-        """
-        Validates birth_date field by calling birth_date_validator
-        """
-        EditPersonValidator.validate_birth_date(self.cleaned_data['birth_date'])
-        return self.cleaned_data['birth_date']
+    def clean(self):
+        
+        super(EditPersonForm, self).clean()
+        cleaned_data = self.cleaned_data
+
+        # Validates that birthdate is in normal range.
+        bdate_status = EditPersonValidator.validate_birth_date(cleaned_data['birth_date'])
+        if bdate_status != 1:
+            raise ValidationError('Please enter a valid year.')
+
         

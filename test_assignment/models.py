@@ -1,5 +1,7 @@
+import json
 from django.core.validators import RegexValidator
 from django.db import models
+
 
 class Person(models.Model):
     # Helper variables
@@ -11,6 +13,9 @@ class Person(models.Model):
     birth_date  = models.CharField(max_length = 100, default = 'N/A')
     contacts    = models.CharField(max_length = 200, default = '{}')
     photo       = models.ImageField(default = 'pic_folder/None/no-img.jpg')
+
+
+
 
 class Request(models.Model):
     scheme      = models.CharField(max_length = 100, default = 'N/A')

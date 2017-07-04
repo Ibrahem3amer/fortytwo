@@ -8,9 +8,9 @@ class EditPersonFormTest(TestCase):
         data  = {
             'first_name':'Ibrahem',
             'sur_name':'Amer',
-            'birth_date':'17-12-1995',
+            'birth_date':'1995-5-5',
             'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
-            'contacts':{"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"},
+            'contacts':"email: sdasd /nskype: ebrahem3amer",
             'photo': 'N/A',
         }
 
@@ -25,9 +25,10 @@ class EditPersonFormTest(TestCase):
         data  = {
             'first_name':'123456',
             'sur_name':'Amer',
-            'birth_date':'17-12-1995',
+            'birth_date':'1995-5-5',
             'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
-            'contacts':{"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"}
+            'contacts':"email: sdasd /nskype: ebrahem3amer",
+            'photo': 'N/A',
         }
         
 
@@ -42,9 +43,10 @@ class EditPersonFormTest(TestCase):
         data  = {
             'first_name':'Ibrahem',
             'sur_name':'134568',
-            'birth_date':'17-12-1995',
+            'birth_date':'1995-5-5',
             'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
-            'contacts':{"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"}
+            'contacts':"email: sdasd /nskype: ebrahem3amer",
+            'photo': 'N/A',
         }
         
 
@@ -61,7 +63,8 @@ class EditPersonFormTest(TestCase):
             'sur_name':'Amer',
             'birth_date':'17-12-2010',
             'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
-            'contacts':{"email": "ibrahem3amer@hotmail.com", "Jabber": "ibrahem3amer", "Skype": "ebrahem3amer"}
+            'contacts':"email: sdasd /nskype: ebrahem3amer",
+            'photo': 'N/A',
         }
         
 
@@ -70,3 +73,5 @@ class EditPersonFormTest(TestCase):
 
         # Assert test
         self.assertFalse(form.is_valid())
+
+

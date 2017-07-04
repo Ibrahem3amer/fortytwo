@@ -1,5 +1,6 @@
 import datetime
 from django.core.exceptions import ValidationError
+from test_assignment.models import Person
 
 class EditPersonValidator(object):
     """Validator for business logic of person model"""
@@ -14,7 +15,9 @@ class EditPersonValidator(object):
         submitted_year  = bdate_to_list[2]
         
         if (now.year - int(submitted_year)) <= 10:
-            raise ValidationError('Please enter a valid year.')
+            return 0
+        return 1
+
 
 
 

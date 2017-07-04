@@ -30,13 +30,12 @@ function create_post() {
             $('#contacts').val('');
             $('#photo').val(''); 
             console.log(json); // log the returned json to the console
-            console.log("success"); // another sanity check
+            console.log(json.status); // another sanity check
         },
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
-            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            $('#results').css("display", "block"); // add the error to the dom
             console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
         }
     });
