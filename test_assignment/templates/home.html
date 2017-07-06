@@ -22,7 +22,7 @@
         <div class="lower_part">
             <div class="photo_area">
                 <label for="photo"><h3>Photo: </h3></label>
-                <img src="{% static person.photo.url %}" alt="user photo" />
+                <img src="{{ person.photo.url }}" alt="user photo" />
             </div>
             <div class="bio_area_home">
                 <label for="bio"><h3>Bio: </h3></label>

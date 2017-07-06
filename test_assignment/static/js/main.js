@@ -7,7 +7,6 @@ $('#post-form').on('submit', function(event){
 
 // AJAX for posting.
 function create_post() {
-    console.log("create post is working!") // sanity check
     $.ajax({
         url : "/edit_info", // the endpoint
         type : "POST", // http method

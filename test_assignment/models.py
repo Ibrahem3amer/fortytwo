@@ -13,14 +13,19 @@ class Person(models.Model):
     bio         = models.CharField(max_length = 500, default = 'N/A')
     birth_date  = models.CharField(max_length = 100, default = 'N/A')
     contacts    = models.CharField(max_length = 200, default = '{}')
-    photo       = models.ImageField(upload_to = 'images/', default = 'images/no-img.jpg')
+    photo       = models.ImageField(default = 'no-img.jpg')
 
-    def clean_photo(self): 
+    def save(self, **kwargs): 
+
+        if not self.id and not self.photo:
+            return
+
+        super(Person, self).save()
 
         size=(200, 200)
 
         # Open it using Pillow library.
-        photo_name  = self.get_photo_filename()
+        photo_name  = self.photo.path
         image       = Image.open(photo_name)
 
         # Resize photo to given size.
