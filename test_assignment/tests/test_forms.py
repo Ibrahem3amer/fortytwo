@@ -74,4 +74,23 @@ class EditPersonFormTest(TestCase):
         # Assert test
         self.assertFalse(form.is_valid())
 
+    def test_edit_image_with_valid_one(self):
+        # Setup test
+        data  = {
+            'first_name':'Ibrahem',
+            'sur_name':'Amer',
+            'birth_date':'17-12-2010',
+            'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
+            'contacts':"email: sdasd /nskype: ebrahem3amer",
+            'photo': '/images/test.jpg',
+        }
+        
+
+        # Exercise test
+        form = EditPersonForm(data = data)
+
+        # Assert test
+        self.assertFalse(form.is_valid())
+
+
 

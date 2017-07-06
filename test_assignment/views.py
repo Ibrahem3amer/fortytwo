@@ -36,7 +36,7 @@ def edit_info(request):
     """
     person      = Person.objects.get(pk = 1)
     if request.method == 'POST':
-        form        = EditPersonForm(request.POST, instance = person)
+        form        = EditPersonForm(request.POST, request.FILES, instance = person)
         response    = {}
         if(form.is_valid()):
             form.save()
