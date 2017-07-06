@@ -1,7 +1,7 @@
 import json
 from django.core.validators import RegexValidator
 from django.db import models
-from PIL import Image
+
 
 
 class Person(models.Model):
@@ -14,24 +14,6 @@ class Person(models.Model):
     birth_date  = models.CharField(max_length = 100, default = 'N/A')
     contacts    = models.CharField(max_length = 200, default = '{}')
     photo       = models.ImageField(default = 'no-img.jpg')
-
-    def save(self, **kwargs): 
-
-        if not self.id and not self.photo:
-            return
-
-        super(Person, self).save()
-
-        size=(200, 200)
-
-        # Open it using Pillow library.
-        photo_name  = self.photo.path
-        image       = Image.open(photo_name)
-
-        # Resize photo to given size.
-        image.thumbnail(size, Image.ANTIALIAS)
-        image.save(photo_name)
-
 
 
 class Request(models.Model):

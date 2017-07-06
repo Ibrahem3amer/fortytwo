@@ -39,7 +39,7 @@ class PersonTest(TestCase):
 
 
         # Assert test
-        self.assertIn('media',db_result.photo.path)
+        self.assertIn('media/test.jpg',db_result.photo.path)
 
 
 class RequestTest(TestCase):

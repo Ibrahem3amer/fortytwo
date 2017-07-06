@@ -1,9 +1,11 @@
+import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.management import call_command
 from django.http import HttpResponse
 from test_assignment.models import Person, Request, RequestHandler
 from test_assignment.forms import EditPersonForm
-import json
+from PIL import Image
+
 
 def homepage_visitor(request):
     """
@@ -39,7 +41,19 @@ def edit_info(request):
         form        = EditPersonForm(request.POST, request.FILES, instance = person)
         response    = {}
         if(form.is_valid()):
-            form.save()
+            person_info = form.save(commit = False)
+            
+            # Edit photo dimensions to 200×200
+            size=(200, 200)
+            # Open it using Pillow library.
+            photo_name  = person_info.photo.path
+            image       = Image.open(photo_name)
+            # Resize photo to given size.
+            image.thumbnail(size, Image.ANTIALIAS)
+            image.save(photo_name)
+
+            person_info.save()
+
             response['status'] = 'success'
             return HttpResponse(json.dumps(response), content_type = "application/json")
         else:
