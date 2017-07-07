@@ -48,7 +48,6 @@ class user_edits_personal_info(TestCase):
             'birth_date':'1995-17-12',
             'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
             'contacts':"email: sdasd /nskype: ebrahem3amer",
-            'photo': 'N/A',
         }
         request         = self.client.post(request, data = data)
 

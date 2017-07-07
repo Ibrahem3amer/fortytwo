@@ -82,7 +82,7 @@ class EditPersonFormTest(TestCase):
             'birth_date':'17-12-2010',
             'bio':'Relentless programmer, ambitious enterpreneur, and avid reader who traces the roots of everything.',
             'contacts':"email: sdasd /nskype: ebrahem3amer",
-            'photo': '/images/test.jpg',
+            'photo': 'test.jpg',
         }
         
 

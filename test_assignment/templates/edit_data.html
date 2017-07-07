@@ -4,7 +4,7 @@
         <div id="results">
             Please enter valid data. 
         </div>
-        <form action="" method="POST" enctype="multipart/form-data" id="post-form">
+        <form action="{% url 'edit_personal_data' %}" method="POST" id="post-form" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="basic_info">
                 <h3><label for="name">Name: </label></h3>

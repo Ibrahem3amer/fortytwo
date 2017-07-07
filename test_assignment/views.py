@@ -4,7 +4,6 @@ from django.core.management import call_command
 from django.http import HttpResponse
 from test_assignment.models import Person, Request, RequestHandler
 from test_assignment.forms import EditPersonForm
-from PIL import Image
 
 
 def homepage_visitor(request):
@@ -42,16 +41,9 @@ def edit_info(request):
         response    = {}
         if(form.is_valid()):
             person_info = form.save(commit = False)
-            
-            # Edit photo dimensions to 200×200
-            size=(200, 200)
-            # Open it using Pillow library.
-            photo_name  = person_info.photo.path
-            image       = Image.open(photo_name)
-            # Resize photo to given size.
-            image.thumbnail(size, Image.ANTIALIAS)
-            image.save(photo_name)
 
+            # Process user photo. 
+            Person.process_user_photo(person_info)
             person_info.save()
 
             response['status'] = 'success'

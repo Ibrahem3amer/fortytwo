@@ -1,44 +1,16 @@
-// Handling submission event.
-$('#post-form').on('submit', function(event){
-    event.preventDefault();
-    console.log("form submitted!")  // sanity check
-    create_post();
-});
+// Initiate Jquery form
+$(document).ready(function (){
+    var options = {
+        clearForm: True,
+    };
 
-// AJAX for posting.
-function create_post() {
-    $.ajax({
-        url : "/edit_info", // the endpoint
-        type : "POST", // http method
-        data : {
-            'first_name':$('#first_name').val(),
-            'sur_name':$('#sur_name').val(),
-            'birth_date':$('#birth_date').val(),
-            'bio':$('#bio').val(),
-            'contacts':$('#contacts').val(),
-            'photo': $('#photo').val(),
-        }, // data sent with the post request
-
-        // handle a successful response
-        success : function(json) {
-            // remove the value from the input
-            $('#first_name').val(''); 
-            $('#sur_name').val(''); 
-            $('#birth_date').val(''); 
-            $('#bio').val('');
-            $('#contacts').val('');
-            $('#photo').val(''); 
-            console.log(json); // log the returned json to the console
-            console.log(json.status); // another sanity check
-        },
-
-        // handle a non-successful response
-        error : function(xhr,errmsg,err) {
-            $('#results').css("display", "block"); // add the error to the dom
-            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-        }
+    // Handling submission event.
+    $('#post-form').submit(function(){
+        // Initiate edit form.
+        $('#post-form').ajaxSubmit(options);
+        return false;
     });
-};
+});
 
 // Handling image preview.
 function handleFiles(files) {
