@@ -19,7 +19,7 @@ httpie==0.9.9
 httplib2==0.9.1
 httpretty==0.8.14
 idna==2.0
-Jinja2==2.8
+Jinja2==2.11.3
 language-selector==0.1
 linecache2==1.0.0
 louis==2.6.4
